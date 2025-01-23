@@ -10,9 +10,24 @@ require 'db_connection.php';
     <title>Document</title>
 </head>
 <body>
+    <p>Add a New Follower</p>
     <?php
     //TODO @joan hacer estructura - manage people
     //para seguir a alguien nuevo, insertar en tabla followers. follower_id es el usuario actual, following_id sera el id del usuario que se va a seguir
+
+    ?>
+    <p>Followers</p>
+    <?php
+    //TODO @joan hacer estructura - manage people
+    //para seguir a alguien nuevo, insertar en tabla followers. follower_id es el usuario actual, following_id sera el id del usuario que se va a seguir
+    
+    ?>
+    <p>Following</p>
+    <?php
+    //TODO @joan hacer estructura - manage people
+    //para seguir a alguien nuevo, insertar en tabla followers. follower_id es el usuario actual, following_id sera el id del usuario que se va a seguir
+
     ?>
 </body>
 </html>
+

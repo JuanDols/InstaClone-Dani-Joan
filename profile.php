@@ -71,6 +71,7 @@ require 'db_connection.php';
         
         //TODO @joan cuadro subir archivos
         //preguntar en clase: donde se subiran los archivos?
+        
 
         //ver fotos del perfil
         //TODO boton eliminar foto y fecha y hora de subida
