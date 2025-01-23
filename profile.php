@@ -74,7 +74,6 @@ require 'db_connection.php';
         
 
         //ver fotos del perfil
-        //TODO boton eliminar foto y fecha y hora de subida
         $sql = 'SELECT ph.user_id, us.username, ph.file_path, ph.caption, ph.created_at FROM instagram_clone.photos ph JOIN users us ON ph.user_id = us.id WHERE user_id = '.$_SESSION["logged_id"].' ORDER BY created_at DESC';
         $result = execQuery(getDbConnection(), $sql);
         if (mysqli_num_rows($result) > 0) {
@@ -88,7 +87,8 @@ require 'db_connection.php';
                 echo '<a href="javascript:void(0)" onclick="openModal(\'' . 'download.php?file='.$row["file_path"] . '\')">';
                 echo '<img src=download.php?file='.$row["file_path"].' width = 200px><br>';
                 echo '</a>';
-                echo '<p><a href=#>' . htmlspecialchars($row['username']) . '</a></p>';
+                //TODO boton eliminar
+                echo '<p><a href="deletephoto.php?photo='.$row["file_path"].'&userid='.$row["user_id"].'">Delete</a></p>';
                 echo '<p>' . htmlspecialchars($row['caption']) . '</p>';
                 echo '<p>' . htmlspecialchars($row['created_at']) . '</p>';
                 echo '</td>';
