@@ -1,4 +1,5 @@
 <?php
+//TODO Download.php should block access to photos if you are not logged in or the photo you are trying to acces doesn't belong to you or the people you follow.
 // Start the session
 session_start();
 
@@ -29,5 +30,4 @@ header('Content-Length: ' . filesize($file_path));
 // Output the file contents to the browser
 readfile($file_path);
 exit;
-?>
 

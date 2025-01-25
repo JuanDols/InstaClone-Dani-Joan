@@ -66,7 +66,7 @@ require 'db_connection.php';
             }
         }
 
-        echo "<p>Followers: $followers_count - Following: $following_count - <a href=\"people.php\">Manage followers</a> - <a href=\"profile.php\">Your profile</a> - <a href=\"logout.php\">Log out</a></p>";
+        echo "<p>Followers: $followers_count - Following: $following_count - <a href=\"people.php\">Manage followers</a> - <a href=\"profile.php?userid=".$_SESSION["logged_id"]."\">Your profile</a> - <a href=\"logout.php\">Log out</a></p>";
         //Upload form may be here
     
         //Photo grid will be here
@@ -84,7 +84,7 @@ require 'db_connection.php';
                 echo '<a href="javascript:void(0)" onclick="openModal(\'' . 'download.php?file='.$row["file_path"] . '\')">';
                 echo '<img src=download.php?file='.$row["file_path"].' width = 200px><br>';
                 echo '</a>';
-                echo '<p><a href=#>' . htmlspecialchars($row['username']) . '</a></p>';
+                echo '<p><a href=profile.php?userid='.$row["user_id"].'>' . htmlspecialchars($row['username']) . '</a></p>';
                 echo '<p>' . htmlspecialchars($row['caption']) . '</p>';
                 echo '<p>' . htmlspecialchars($row['created_at']) . '</p>';
                 echo '</td>';

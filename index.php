@@ -13,7 +13,7 @@ require "db_connection.php";
 
 <body>
     <?php
-    //TODO htmlspecialchars and mysqli_real_escape_string
+    //TODO @joan -> enunciado: Protect the site from malicious user input by using htmlspecialchars and mysqli_real_escape_string.
 
     //TODO aqui con el insert ignore, cada vez que se ejecuta initDatabase, va a insertar las imagenes repetidas (porque no necesita primary key)
     initDatabase();
@@ -43,13 +43,17 @@ require "db_connection.php";
         exit();
     } else {
         #if session no encuentra el usuario, cargar login
-        echo '<h1>Login form</h1>';
+        echo '<h1>InstaClone Login</h1>';
         echo '<form action="" method="POST">';
         echo 'User: <input type="text" name="user"><br>';
         echo 'Password: <input type="password" name="password"><br>';
         echo '<input type="submit" name="login_submit">';
         echo '</form>';
+        echo '<';
     }
+
+    //TODO Only logging in and out is required. If you implement registering and deleting users, you will get an extra point. 
+    // si se hace register: Do not allow special characters in usernames when registering. See this: https://stackoverflow.com/questions/32911875/allow-only-english-letters-and-numbers-in-php
     ?>
 </body>
 

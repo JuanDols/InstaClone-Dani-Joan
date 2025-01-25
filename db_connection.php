@@ -107,7 +107,7 @@ function execQuery($conn, $sql)
 {
 	$result = mysqli_query($conn, $sql);
 	if (!$result) {
-		die("Error creating table: " . mysqli_error($conn));
+		die("Error: " . mysqli_error($conn));
 	}
 	return $result;
 }
@@ -131,5 +131,6 @@ function getDbConnection()
 
 
 //Place below all database related functions
-
+//TODO All database related stuff should be in db_connection.php file. Create here functions (getPhotosFeed, getFollowers...) and call them from your main web files when needed. 
+//preguntar si basta con hacer la query cada vez y usar execQuery, o poner aqui cada funcion con cada select especifico?
 ?>
