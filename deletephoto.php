@@ -9,7 +9,7 @@ if(isset($_GET["photoid"]) && isset($_GET["userid"])){
         if(!$result){
             //error al eliminar
         }
-        header('Location: profile.php');
+        header('Location: profile.php?userid='.$_SESSION["logged_id"]);
         exit();
     }
 }else{
