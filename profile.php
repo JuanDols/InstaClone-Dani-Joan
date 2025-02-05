@@ -74,19 +74,16 @@ require 'db_connection.php';
 
             echo "<p>Followers: $followers_count - Following: $following_count - <a href=\"people.php\">Manage followers</a> - <a href=\"feed.php\">Your feed</a> - <a href=\"deleteuser.php\">Delete account</a> - <a href=\"logout.php\">Log out</a></p>";
 
-            //TODO @joan cuadro subir archivos y funcionalidad
             //-Store photos OUTSIDE htdocs. Create a folder called SECURE_FOLDER and place photos inside it. Use it's md5 hash as filename for uploads. Use the doenload.php script to access them.
             //- Only accept square JPG photos. Check the mimetype and dimensions.
             ?>
                 <form action="upload.php" method="post" enctype="multipart/form-data">
-                    Select image to upload:
-                    <?php
-                    
-                    echo "<input type=\"hidden\" value=\"".$_GET["userid"]."\">";
-                    ?>
-                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    Select image to upload: <br>
+                    <input type="file" name="fileToUpload" id="fileToUpload"> <br>
+                    Caption:
+                    <input type="text" name="caption" id="caption"> <br>
                     <input type="submit" value="Upload Image" name="submit">
-                </form>
+                </form>    
             <?php
             //ver fotos del perfil
             $sql = 'SELECT ph.id, ph.user_id, us.username, ph.file_path, ph.caption, ph.created_at FROM instagram_clone.photos ph JOIN users us ON ph.user_id = us.id WHERE user_id = ' . $_SESSION["logged_id"] . ' ORDER BY created_at DESC';

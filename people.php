@@ -18,7 +18,6 @@ require 'db_connection.php';
     </form>
 
     <?php
-    //TODO @joan hacer estructura - manage people
     //para seguir a alguien nuevo, insertar en tabla followers. follower_id es el usuario actual, following_id sera el id del usuario que se va a seguir
     $conn = getDbConnection();
     // Verificar si se recibió el nombre del usuario a seguir desde un formulario
@@ -58,7 +57,6 @@ require 'db_connection.php';
     <p>Followers</p>
     <ul>
     <?php
-    //TODO @joan hacer estructura - manage people
     //para seguir a alguien nuevo, insertar en tabla followers. follower_id es el usuario actual, following_id sera el id del usuario que se va a seguir
         $sql = "SELECT u.id, u.username FROM followers f JOIN users u ON f.follower_id = u.id 
         WHERE f.following_id = ".$_SESSION['logged_id']." ORDER BY u.username DESC"; //1 deberia ser la id de la sesion
@@ -74,7 +72,6 @@ require 'db_connection.php';
     <p>Following</p>
     <ul>
     <?php
-    //TODO @joan hacer estructura - manage people
     //para seguir a alguien nuevo, insertar en tabla followers. follower_id es el usuario actual, following_id sera el id del usuario que se va a seguir
     $sql = "SELECT u.id, u.username FROM followers f JOIN users u ON f.following_id = u.id 
     WHERE f.follower_id = ".$_SESSION['logged_id']." ORDER BY u.username DESC"; //1 deberia ser la id de la sesion
