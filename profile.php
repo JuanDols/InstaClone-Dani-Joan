@@ -134,22 +134,12 @@ require 'db_connection.php';
                 //Menu items will be here
     
                 //obtener numero de gente que me sigue
-                $sql = "SELECT count(follower_id) AS followers FROM instagram_clone.followers WHERE following_id = " . $currentuserid . "; -- gente que me sigue";
-                $result = execQuery(getDbConnection(), $sql);
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $followers_count = $row["followers"];
-                    }
-                }
+                $followers_count = getPeopleFollowingMe($currentuserid);
+
 
                 //obtener numero de gente que yo sigo
-                $sql = "SELECT count(following_id) AS following FROM instagram_clone.followers WHERE follower_id = " . $currentuserid . "; -- gente que yo sigo";
-                $result = execQuery(getDbConnection(), $sql);
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $following_count = $row["following"];
-                    }
-                }
+                $following_count = getPeopleIFollow($currentuserid);
+
 
                 echo "<p>Followers: $followers_count - Following: $following_count - <a href=\"people.php\">Manage followers</a> - <a href=\"profile.php?userid=" . $_SESSION["logged_id"] . "\">Your profile</a> - <a href=\"feed.php\">Your feed</a> - <a href=\"logout.php\">Log out</a></p>";
 
@@ -192,6 +182,15 @@ require 'db_connection.php';
         exit();
     }
     ?>
+    <!-- THIS IS FOR OPENING IMAGES FULL SIZE. DO NOT TOUCH -->
+    <script>
+        function openModal(imgPath) {
+            var modal = document.getElementById('imageModal');
+            var modalImg = document.getElementById('modalImg');
+            modal.style.display = "block";
+            modalImg.src = imgPath;
+        }
+    </script>
 </body>
 
 </html>

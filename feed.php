@@ -49,22 +49,10 @@ require 'db_connection.php';
         //Menu items will be here
 
         //obtener numero de gente que me sigue
-        $sql = "SELECT count(follower_id) AS followers FROM instagram_clone.followers WHERE following_id = ".$_SESSION["logged_id"]."; -- gente que me sigue";
-        $result = execQuery(getDbConnection(), $sql);
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $followers_count = $row["followers"];
-            }
-        }
-
+        $followers_count = getPeopleFollowingMe($_SESSION["logged_id"]);
+            
         //obtener numero de gente que yo sigo
-        $sql = "SELECT count(following_id) AS following FROM instagram_clone.followers WHERE follower_id = ".$_SESSION["logged_id"]."; -- gente que yo sigo";
-        $result = execQuery(getDbConnection(), $sql);
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $following_count = $row["following"];
-            }
-        }
+        $following_count = getPeopleIFollow($_SESSION["logged_id"]);
 
         echo "<p>Followers: $followers_count - Following: $following_count - <a href=\"people.php\">Manage followers</a> - <a href=\"profile.php?userid=".$_SESSION["logged_id"]."\">Your profile</a> - <a href=\"logout.php\">Log out</a></p>";
         //Upload form may be here

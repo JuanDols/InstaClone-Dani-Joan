@@ -22,8 +22,7 @@ require 'db_connection.php';
     echo "</form>";
     if(isset($_POST["delete_confirm"])){
         //delete query
-        $sql = "DELETE FROM users WHERE username LIKE '".$_SESSION["logged_user"]."'";
-        $result = execQuery(getDbConnection(), $sql);
+        $result = deleteUser($_SESSION["logged_user"]);
         if (!$result) {
             echo "Error al eliminar usuario.";
         }

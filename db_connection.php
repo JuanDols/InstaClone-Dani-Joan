@@ -133,6 +133,30 @@ function getDbConnection()
 
 
 //Place below all database related functions
-//TODO All database related stuff should be in db_connection.php file. Create here functions (getPhotosFeed, getFollowers...) and call them from your main web files when needed. 
-//preguntar si basta con hacer la query cada vez y usar execQuery, o poner aqui cada funcion con cada select especifico?
+function getPeopleFollowingMe($following_id) {
+	//obtener numero de gente que me sigue
+	$sql = "SELECT count(follower_id) AS followers FROM instagram_clone.followers WHERE following_id = ".$following_id."; -- gente que me sigue";
+	$result = execQuery(getDbConnection(), $sql);
+	if (mysqli_num_rows($result) > 0) {
+		while ($row = mysqli_fetch_assoc($result)) {
+			return $row["followers"];
+		}
+	}
+}
+
+function getPeopleIFollow($follower_id) {
+	$sql = "SELECT count(following_id) AS following FROM instagram_clone.followers WHERE follower_id = ".$follower_id."; -- gente que yo sigo";
+        $result = execQuery(getDbConnection(), $sql);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                return $row["following"];
+            }
+        }
+}
+
+function deleteUser($logged_user){
+	$sql = "DELETE FROM users WHERE username LIKE '".$logged_user."'";
+    $result = execQuery(getDbConnection(), $sql);
+	return $result;
+}
 ?>
