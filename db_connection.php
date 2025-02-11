@@ -159,4 +159,10 @@ function deleteUser($logged_user){
     $result = execQuery(getDbConnection(), $sql);
 	return $result;
 }
+
+function deletePhoto($photoid){
+	$sql = "DELETE FROM photos WHERE id = ".$photoid;
+        $result = execQuery(getDbConnection(), $sql);
+		return $result;
+}
 ?>

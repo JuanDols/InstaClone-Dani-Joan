@@ -79,9 +79,9 @@ require 'db_connection.php';
             ?>
                 <form action="upload.php" method="post" enctype="multipart/form-data">
                     Select image to upload: <br>
-                    <input type="file" name="fileToUpload" id="fileToUpload"> <br>
+                    <input type="file" name="fileToUpload" id="fileToUpload" required> <br>
                     Caption:
-                    <input type="text" name="caption" id="caption"> <br>
+                    <input type="text" name="caption" id="caption" required> 
                     <input type="submit" value="Upload Image" name="submit">
                 </form>    
             <?php
